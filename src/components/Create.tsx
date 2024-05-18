@@ -1,10 +1,7 @@
 "use client";
 import {useForm, SubmitHandler, Controller} from "react-hook-form";
 import { Item, useToDoState } from "@/store";
-import {
-  createClientComponentClient,
-  Session,
-} from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FC } from "react";
 import DatePicker from "react-datepicker";
 
@@ -14,11 +11,8 @@ type Inputs = {
   enddate: string;
 };
 
-type Props = {
-  session: Session;
-};
 
-const Create: FC<Props> = () => {
+const Create: FC = () => {
   const {
     control,
     register,
