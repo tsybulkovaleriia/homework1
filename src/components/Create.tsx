@@ -9,6 +9,7 @@ type Inputs = {
   title: string;
   description: string;
   enddate: string;
+  priotiry: string;
 };
 
 
