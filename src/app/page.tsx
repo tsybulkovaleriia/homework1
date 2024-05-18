@@ -1,11 +1,6 @@
 import Stat from "@/components/Stat";
 import Create from "@/components/Create";
-import { cookies } from "next/headers";
-import {
-  createServerComponentClient,
-} from "@supabase/auth-helpers-nextjs";
 import ToDoList from "@/components/ToDoList";
-import { Database } from "../../types_db";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Dashboard = async () => {

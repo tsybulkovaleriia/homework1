@@ -8,8 +8,8 @@ import DatePicker from "react-datepicker";
 type Inputs = {
   title: string;
   description: string;
-  enddate: string;
-  priotiry: string;
+  enddate: Date | null;
+  priority: string;
 };
 
 
@@ -28,6 +28,7 @@ const Create: FC = () => {
   const onSubmit: SubmitHandler<Inputs> = async ({ title , description, priority, enddate}) => {
     const supabase = createClientComponentClient();
 
+    // @ts-ignore
     const item = {
       title,
       description,
@@ -36,8 +37,6 @@ const Create: FC = () => {
       priority,
       status: false,
     } as Item;
-
-    console.log(item)
 
     const { error, data } = await supabase
       .from("todos")
@@ -86,16 +85,11 @@ const Create: FC = () => {
         </div>
         <div className="bg-black-500 rounded-lg grow px-4 py-2 focus-within:border-primary border border-transparent">
           <Controller
-            name={"enddate"}
             control={control}
             {...register("enddate", {required: "Your next task can not be empty"})}
             render={({ field: { onChange, value } }) => {
               return (
-                <DatePicker
-                  onChange={onChange}
-                  selected={value}
-                  placeholderText="Enter your end date"
-                />
+                <DatePicker onChange={onChange} selected={value || new Date()} placeholderText="Enter your end date"/>
               );
             }}
           />

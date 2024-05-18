@@ -85,10 +85,13 @@ const ToDoList = () => {
     }
   };
 
+  // @ts-ignore
   const sortByPriority = (array) => {
 
     const priorityOrder = { Low: 1, Medium: 2, High: 3 };
+    // @ts-ignore
     array.sort((a, b) => {
+      // @ts-ignore
       return priorityOrder[a.priority] - priorityOrder[b.priority];
     });
 
@@ -109,9 +112,9 @@ const ToDoList = () => {
   }
 
   return <>
-    {sortByPriority(todos)?.map((item) =>
+    {sortByPriority(todos)?.map((item: Item) =>
     <ToDoItem
-      key={item.id}
+      key={item?.id}
       onUpdate={handleUpdate}
       onToggle={() => handleToggle(item)}
       onDelete={handleDelete}
